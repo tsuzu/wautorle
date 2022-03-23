@@ -285,8 +285,7 @@ std::map<Status, std::vector<Word>> getCandidates(const Status& currentStatus, c
 }
 
 int main() {
-
-  loadWords();
+  // loadWords();
 
   std::vector<Word> words, candidates;
 
