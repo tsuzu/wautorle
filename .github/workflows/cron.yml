@@ -34,5 +34,7 @@ jobs:
           cp ./wordle-state-stats.json ./storage/wordle-state-stats.json
 
           git add .
+          git config --global user.email "tsuzu@tsuzu.dev"
+          git config --global user.name "Tsuzu"
           git commit -m "Update state/stats"
           git push origin main
