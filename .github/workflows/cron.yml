@@ -24,7 +24,7 @@ jobs:
           make wordle
       - env:
           TZ: "Asia/Tokyo"
-          TWEET_IFTTT_URL: ${{secret.TWEET_IFTTT_URL}}
+          TWEET_IFTTT_URL: ${{secrets.TWEET_IFTTT_URL}}
         run: |
           export PATH=$PWD/wordle-solver:$PATH
           cp ./storage/wordle-state-stats.json .
