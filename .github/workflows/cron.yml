@@ -1,0 +1,33 @@
+name: Daily Wordle
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  solve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.18'
+      - uses: nanasess/setup-chromedriver@v1.0.7
+      - run: |
+          cd wordle-solver
+          make
+      - env:
+          TZ: "Asia/Tokyo"
+          TWEET_IFTTT_URL: ${secret.TWEET_IFTTT_URL}
+        run: |
+          export PATH=$PWD/wordle-solver:$PATH
+          cp ./storage/wordle-state-stats.json .
+
+          go run main.go wordle-state-stats.json
+
+          cp . ./storage/wordle-state-stats.json
+
+          git add .
+          git commit -m "Update state/stats"
+          git push origin main
