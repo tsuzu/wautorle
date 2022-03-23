@@ -19,7 +19,8 @@ jobs:
           DOWNLOAD_CANDIDATES_URL: ${secrets.DOWNLOAD_CANDIDATES_URL}
         run: |
           cd wordle-solver
-          make download wordle
+          make download DOWNLOAD_WORDS_URL=$DOWNLOAD_WORDS_URL DOWNLOAD_CANDIDATES_URL=$DOWNLOAD_CANDIDATES_URL 
+          make wordle
       - env:
           TZ: "Asia/Tokyo"
           TWEET_IFTTT_URL: ${secret.TWEET_IFTTT_URL}
