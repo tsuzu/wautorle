@@ -1,1 +1,4 @@
-{"state":{"boardState":["soare","uneth","chest","","",""],"evaluations":[["present","absent","absent","absent","present"],["absent","absent","correct","present","present"],["correct","correct","correct","correct","correct"],null,null,null],"rowIndex":3,"solution":"chest","gameStatus":"WIN","lastPlayedTs":1648064993799,"lastCompletedTs":1648064993799,"restoringFromLocalStorage":null,"hardMode":false},"stats":{"currentStreak":1,"maxStreak":50,"guesses":{"1":0,"2":1,"3":20,"4":25,"5":15,"6":4,"fail":1},"winPercentage":98,"gamesPlayed":66,"gamesWon":65,"averageGuesses":4}}
+{
+    "state": {"boardState":["","","","","",""],"evaluations":[null,null,null,null,null,null],"rowIndex":0,"solution":"chest","gameStatus":"IN_PROGRESS","lastPlayedTs":1648016807286,"lastCompletedTs":1648016807286,"restoringFromLocalStorage":null,"hardMode":false},
+    "stats": {"currentStreak":50,"maxStreak":50,"guesses":{"1":0,"2":1,"3":18,"4":25,"5":15,"6":4,"fail":1},"winPercentage":98,"gamesPlayed":64,"gamesWon":63,"averageGuesses":4}
+}
