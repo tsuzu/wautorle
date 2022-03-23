@@ -19,7 +19,8 @@ jobs:
           DOWNLOAD_CANDIDATES_URL: ${secrets.DOWNLOAD_CANDIDATES_URL}
         run: |
           cd wordle-solver
-          make download DOWNLOAD_WORDS_URL=$DOWNLOAD_WORDS_URL DOWNLOAD_CANDIDATES_URL=$DOWNLOAD_CANDIDATES_URL 
+          curl -o ./words/candidates.csv $DOWNLOAD_CANDIDATES_URL
+          curl -o ./words/words.csv $DOWNLOAD_WORDS_URL
           make wordle
       - env:
           TZ: "Asia/Tokyo"
