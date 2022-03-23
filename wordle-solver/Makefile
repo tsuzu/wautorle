@@ -3,5 +3,5 @@ wordle: wordle.cpp
 
 .PHONY: download
 download:
-	curl -o ./words/candidates.csv $(DOWNLOAD_CANDIDATES_URL)
-	curl -o ./words/words.csv $(DOWNLOAD_WORDS_URL)
+	curl -o ./words/candidates.csv ${DOWNLOAD_CANDIDATES_URL}
+	curl -o ./words/words.csv ${DOWNLOAD_WORDS_URL}
