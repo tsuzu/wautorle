@@ -78,6 +78,10 @@ func (a *Automator) SetStateStats(stateStats string) error {
 		stateStats,
 	})
 
+	if err := a.wd.Refresh(); err != nil {
+		return err
+	}
+
 	return err
 }
 
