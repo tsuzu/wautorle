@@ -16,7 +16,7 @@ jobs:
       - uses: nanasess/setup-chromedriver@v1.0.7
       - run: |
           cd wordle-solver
-          make
+          make wordle download
       - env:
           TZ: "Asia/Tokyo"
           TWEET_IFTTT_URL: ${secret.TWEET_IFTTT_URL}
