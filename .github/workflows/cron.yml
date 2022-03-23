@@ -31,7 +31,7 @@ jobs:
 
           go run main.go wordle-state-stats.json
 
-          cp . ./storage/wordle-state-stats.json
+          cp ./wordle-state-stats.json ./storage/wordle-state-stats.json
 
           git add .
           git commit -m "Update state/stats"
