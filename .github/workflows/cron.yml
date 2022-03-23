@@ -15,8 +15,8 @@ jobs:
           go-version: '1.18'
       - uses: nanasess/setup-chromedriver@v1.0.7
       - env:
-          DOWNLOAD_WORDS_URL: ${secrets.DOWNLOAD_WORDS_URL}
-          DOWNLOAD_CANDIDATES_URL: ${secrets.DOWNLOAD_CANDIDATES_URL}
+          DOWNLOAD_WORDS_URL: ${secret.DOWNLOAD_WORDS_URL}
+          DOWNLOAD_CANDIDATES_URL: ${secret.DOWNLOAD_CANDIDATES_URL}
         run: |
           cd wordle-solver
           curl -o ./words/candidates.csv $DOWNLOAD_CANDIDATES_URL
