@@ -107,7 +107,7 @@ func (r Result) String() string {
 func ParseResult(s string) Result {
 	idx := 0
 	var r Result
-	var col Color = Gray
+	col := Gray
 	for _, c := range []byte(s) {
 		if c == 'G' {
 			col = Green
