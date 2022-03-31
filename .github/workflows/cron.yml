@@ -42,7 +42,10 @@ jobs:
           git commit -m "Update state/stats"
           git push origin main
 
+          sleep 5
+
           IMAGE_URL=https://raw.githubusercontent.com/$GITHUB_ACTION_REPOSITORY/$(git rev-parse HEAD)/storage/result.png
+          echo $IMAGE_URL
           go run cmd/tweeter/main.go result.txt $IMAGE_URL
 
       - if: ${{ failure() }}
