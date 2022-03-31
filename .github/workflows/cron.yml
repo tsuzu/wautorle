@@ -29,15 +29,20 @@ jobs:
           export PATH=$PWD/wordle-solver:$PATH
           cp ./storage/wordle-state-stats.json .
 
-          go run main.go wordle-state-stats.json
+          go run main.go wordle-state-stats.json result.txt result.png
 
           cp ./wordle-state-stats.json ./storage/wordle-state-stats.json
+          cp ./result.png ./storage/result.png
 
           git add .
           git config --global user.email "tsuzu@tsuzu.dev"
           git config --global user.name "Tsuzu"
           git commit -m "Update state/stats"
           git push origin main
+
+          IMAGE_URL=https://raw.githubusercontent.com/$GITHUB_ACTION_REPOSITORY/$(git rev-parse HEAD)/storage/result.png
+          go run cmd/tweeter/main.go result.txt $IMAGE_URL
+
       - if: ${{ failure() }}
         run: |
           curl -X POST -d '{"value1": "@tsuzu_misw Wordle solver has failed."}' -H 'Content-Type: application/json' "${{secrets.TWEET_IFTTT_URL}}"

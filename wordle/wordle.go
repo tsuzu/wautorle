@@ -122,6 +122,10 @@ func (a *Automator) Line(i int) (string, error) {
 	return result.(string), nil
 }
 
+func (a *Automator) Screenshot() ([]byte, error) {
+	return a.wd.Screenshot()
+}
+
 func (a *Automator) Enter(word string) error {
 	const script = `
 		document.querySelector('game-app').shadowRoot.querySelector('game-keyboard').shadowRoot.querySelector('button[data-key=%c]').click();

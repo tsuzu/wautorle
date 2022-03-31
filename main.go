@@ -1,49 +1,13 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
-	"net/http"
 	"os"
 	"time"
 
 	"github.com/tsuzu/wautorle/runner"
 	"github.com/tsuzu/wautorle/wordle"
 )
-
-var client = http.Client{
-	Timeout: 10 * time.Second,
-}
-
-func tweet(result string) error {
-	type Payload struct {
-		Value1 string `json:"value1"`
-	}
-
-	data := Payload{
-		Value1: result,
-	}
-	payloadBytes, err := json.Marshal(data)
-	if err != nil {
-		return err
-	}
-	body := bytes.NewReader(payloadBytes)
-
-	req, err := http.NewRequest("POST", os.Getenv("TWEET_IFTTT_URL"), body)
-	if err != nil {
-		return err
-	}
-	req.Header.Set("Content-Type", "application/json")
-
-	resp, err := client.Do(req)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-
-	return nil
-}
 
 func main() {
 	a, err := wordle.NewAutomator()
@@ -125,7 +89,17 @@ func main() {
 				}
 				fmt.Println(result)
 
-				if err := tweet(result); err != nil {
+				ss, err := a.Screenshot()
+
+				if err != nil {
+					panic(err)
+				}
+
+				if err := os.WriteFile(os.Args[2], []byte(result), 0774); err != nil {
+					panic(err)
+				}
+
+				if err := os.WriteFile(os.Args[3], ss, 0774); err != nil {
 					panic(err)
 				}
 
